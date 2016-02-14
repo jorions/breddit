@@ -33,7 +33,22 @@ App\Subbreddit::create([
 
 $factory->define(App\Subbreddit::class, function(Faker\Generator $faker) {
 	return [
-		'name' => $faker->word
-		'description' => $faker->text
+		'name' => $faker->word,
+		'description' => $faker->text,
+	];
+});
+
+
+$factory->define(App\Comment::class, function(Faker\Generator $faker) {
+	return [
+		'content' => $faker->text,
+	];
+});
+
+$factory->define(App\Post::class, function(Faker\Generator $faker) {
+	return [
+		'title' => $faker->sentence,
+		'content' => $faker->text,
+		'url' => $faker->url,
 	];
 });
