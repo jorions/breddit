@@ -11,6 +11,7 @@
 |
 */
 
+// This creates an instance using the define method (similar to saying $factory =)
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
@@ -18,4 +19,21 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'password' => bcrypt(str_random(10)),
         'remember_token' => str_random(10),
     ];
+});
+
+
+/*
+Below code is equivalent to saying
+App\Subbreddit::create([
+	$name->subbreddit()
+	$descrption->subbreddit()
+])
+*/
+
+
+$factory->define(App\Subbreddit::class, function(Faker\Generator $faker) {
+	return [
+		'name' => $faker->word
+		'description' => $faker->text
+	];
 });

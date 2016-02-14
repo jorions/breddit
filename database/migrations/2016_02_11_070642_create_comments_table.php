@@ -3,20 +3,21 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSubbreddits extends Migration
+class CreateCommentsTable extends Migration
 {
-    /**
+     /**
      * Run the migrations.
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('subbreddits', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->text('description');
             $table->integer('user_id')->unsigned();
+            $table->integer('comment_id')->unsigned()->nullable();
+            $table->integer('post_id')->unsigned()->nullable();
+            $table->text('content');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateSubbreddits extends Migration
      */
     public function down()
     {
-        Schema::drop('subbreddits');
+        Schema::drop('comments');
     }
 }

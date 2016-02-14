@@ -11,6 +11,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserTableSeeder::class);
+        factory(App\User::class, 1000)->create()->each(function($user) {
+        	$subbreddit = new App\Subbreddit;
+        	$subbreddit->name = 
+
+
+
+
+        	)
+        }
     }
 }
