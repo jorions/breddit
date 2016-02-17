@@ -27,6 +27,6 @@ class Post extends Model
      */
     public function comments()
     {
-        return $this->hasMany('App\Subbreddit');
+        return $this->hasMany('App\Comment');
     }
 }
