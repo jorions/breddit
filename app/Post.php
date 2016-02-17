@@ -23,7 +23,7 @@ class Post extends Model
     }
 
     /**
-     * Get the comments that owns the post
+     * Get the comments of the post
      */
     public function comments()
     {
