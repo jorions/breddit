@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 500)->create()->each(function($user) {
+        factory(App\User::class, 50)->create()->each(function($user) {
 
             // Each user will make 1 subbreddit
             $user->subbreddits()->save(factory(App\Subbreddit::class)->make());

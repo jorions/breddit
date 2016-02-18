@@ -18,6 +18,12 @@ Route::get('/', function () {
 
 Route::resource('subbreddit', 'SubbredditController');
 
+Route::resource('user', 'UserController');
+
+Route::resource('post', 'PostController');
+
+Route::resource('comment', 'CommentController');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
