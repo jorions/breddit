@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App;
 
-class UserController extends Controller
+class SubbredditsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return App\User::all();
+        return App\Subbreddit::all();
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -31,6 +32,7 @@ class UserController extends Controller
         //
     }
 
+
     /**
      * Display the specified resource.
      *
@@ -39,8 +41,11 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return App\Subbreddit::with('posts')->find($id);
+        // Show all the comments of all of the posts that belong to the subbreddit with the id of $id
+        // Eloquent sees 'posts.comments' as the relationships of posts() and comments() within Subbreddits and Posts, respectively
+        return App\Subbreddit::with('posts.comments')->find($id);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -53,6 +58,7 @@ class UserController extends Controller
     {
         //
     }
+
 
     /**
      * Remove the specified resource from storage.

@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App;
 
-class CommentController extends Controller
+class CommentsController extends Controller
 {
     /**
      * Display a listing of the resource.

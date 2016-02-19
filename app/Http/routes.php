@@ -16,13 +16,13 @@ Route::get('/', function () {
 });
 
 
-Route::resource('subbreddit', 'SubbredditController');
+Route::resource('subbreddit', 'SubbredditsController');
 
-Route::resource('user', 'UserController');
+Route::resource('user', 'UsersController');
 
-Route::resource('post', 'PostController');
+Route::resource('post', 'PostsController');
 
-Route::resource('comment', 'CommentController');
+Route::resource('comment', 'CommentsController');
 
 /*
 |--------------------------------------------------------------------------
