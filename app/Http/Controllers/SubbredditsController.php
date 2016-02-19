@@ -10,6 +10,8 @@ use App;
 
 class SubbredditsController extends Controller
 {
+
+    // index is routed to from a GET request
     /**
      * Display a listing of the resource.
      *
@@ -21,6 +23,7 @@ class SubbredditsController extends Controller
     }
 
 
+    // store is routed to from a POST request
     /**
      * Store a newly created resource in storage.
      *
@@ -29,10 +32,21 @@ class SubbredditsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Create a new subbreddit
+        $subbreddit = new App\Subbreddit;
+
+        $subbreddit->user_id = $request->user_id;
+        $subbreddit->name = $request->name;
+        $subbreddit->description = $request->description;
+
+        $subbreddit->save();
+
+        // Return the new thing we have created
+        return $subbreddit;
     }
 
 
+    // show is routed to from a GET request
     /**
      * Display the specified resource.
      *
@@ -43,10 +57,11 @@ class SubbredditsController extends Controller
     {
         // Show all the comments of all of the posts that belong to the subbreddit with the id of $id
         // Eloquent sees 'posts.comments' as the relationships of posts() and comments() within Subbreddits and Posts, respectively
-        return App\Subbreddit::with('posts.comments')->find($id);
+        return App\Subbreddit::with('posts.comments.childComments')->find($id);
     }
 
 
+    // update is routed to from a PUT request
     /**
      * Update the specified resource in storage.
      *
@@ -56,10 +71,20 @@ class SubbredditsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Get a current subbreddit based on its ID
+        $subbreddit = App\Subbreddit::find($id);
+
+        $subbreddit->user_id = $request->user_id;
+        $subbreddit->name = $request->name;
+        $subbreddit->description = $request->description;
+
+        $subbreddit->save();
+
+        return $subbreddit;
     }
 
 
+    // destroy is routed to from a DELETE request
     /**
      * Remove the specified resource from storage.
      *
@@ -68,6 +93,13 @@ class SubbredditsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // If we instead said $subbreddit = App\Subbreddit::destroy($id); it would remove the entry from the
+        // database then return TRUE or FALSE, which would be assigned to $subbreddit. So instead we used delete() to
+        // keep the entry available in memory in case we want to undo the delete
+        $subbreddit = App\Subbreddit::find($id);
+        $subbreddit->delete();
+
+        // Return the now-deleted subbreddit in case the delete needs to be undone
+        return $subbreddit;
     }
 }
