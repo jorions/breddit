@@ -28,7 +28,18 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new App\Post;
+
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->user_id = $request->user_id;
+        $post->subbreddit_id = $request->subbreddit_id;
+        // ?? SHOULD THE URL COME FROM $request OR SHOULD IT BE A FORMATTED VERSION OF THE TITLE ??
+        $post->url = $request->url;
+
+        $post->save();
+
+        return $post;
     }
 
     /**
@@ -51,7 +62,13 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = App\Post::find($id);
+
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->user_id = Auth::user()->id;
+        $post->subbreddit_id = $request->subbreddit_id;
+        $post->url = $request->url;
     }
 
     /**
@@ -62,6 +79,9 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = App\Post::find($id);
+        $post->delete();
+
+        return $post;
     }
 }

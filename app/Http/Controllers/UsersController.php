@@ -28,7 +28,20 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new App\User;
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        // ?? IS THERE A DIFFERENT WAY TO STORE THIS GIVEN THAT WE SHOULD HASH THE DATA??
+        $user->password = $request->password;
+
+        // ?? DO WE HAVE TO ALSO STORE A REMEMBERTOKEN??
+        //$user->rememberToken();
+
+        $user->save();
+
+        return $user;
     }
 
     /**
@@ -51,7 +64,18 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = App\User::find($id);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        // ?? IS THERE A DIFFERENT WAY TO STORE THIS GIVEN THAT WE SHOULD HASH THE DATA??
+        $user->password = $request->password;
+
+        $user->save();
+
+        return $user;
+
     }
 
     /**
@@ -62,6 +86,9 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = App\User::find($id);
+        $user->delete();
+
+        return $user;
     }
 }
