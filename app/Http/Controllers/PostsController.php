@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App;
+use Illuminate\Foundation\Auth;
 
 class PostsController extends Controller
 {
@@ -66,7 +67,7 @@ class PostsController extends Controller
         $post->title = $request->title;
         $post->content = $request->post_content;
         //$post->subbreddit_id = $request->subbreddit_id;
-        //$post->url = $request->url;
+        $post->url = $request->url;
 
         $post->save();
 

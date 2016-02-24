@@ -37,7 +37,7 @@ class SubbredditsController extends Controller
 
         // ?? SHOULD THIS USER_ID BE AUTHENTICATED LIKE OUR EXAMPLE BELOW? IF NOT HOW DOES THE $request KNOW WHAT THE
         // USER_ID SHOULD BE?
-        $subbreddit->user_id = $request->user_id;
+        $subbreddit->user_id = Auth::user()->id;
         $subbreddit->name = $request->name;
         $subbreddit->description = $request->description;
 
