@@ -37,7 +37,7 @@ class SubbredditsController extends Controller
 
         // ?? SHOULD THIS USER_ID BE AUTHENTICATED LIKE OUR EXAMPLE BELOW? IF NOT HOW DOES THE $request KNOW WHAT THE
         // USER_ID SHOULD BE?
-        $subbreddit->user_id = Auth::user()->id;
+        $subbreddit->user_id =  \Auth::user()->id;
         $subbreddit->name = $request->name;
         $subbreddit->description = $request->description;
 
@@ -75,10 +75,6 @@ class SubbredditsController extends Controller
     {
         // Get a current subbreddit based on its ID
         $subbreddit = App\Subbreddit::find($id);
-
-        // It is a bad practice to use $subbreddit->user_id = $request->user_id; because someone could use a service
-        // like Postman to lie about their user_id. Now that we have authentication set up we can instead say...
-        $subbreddit->user_id = Auth::user()->id;
         $subbreddit->name = $request->name;
         $subbreddit->description = $request->description;
 

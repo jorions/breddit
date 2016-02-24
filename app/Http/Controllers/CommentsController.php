@@ -30,7 +30,7 @@ class CommentsController extends Controller
     {
         $comment = new App\Comment;
 
-        $comment->user_id = Auth::user()->id;
+        $comment->user_id = \Auth::user()->id;
         $comment->comment_id = $request->comment_id;
         $comment->post_id = $request->post_id;
         $comment->content = $request->comment_content;
