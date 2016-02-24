@@ -17,7 +17,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return App\User::all();
+        return App\Post::all();
     }
 
     /**
@@ -31,10 +31,9 @@ class PostsController extends Controller
         $post = new App\Post;
 
         $post->title = $request->title;
-        $post->content = $request->content;
-        $post->user_id = $request->user_id;
+        $post->content = $request->post_content;
+        $post->user_id = Auth::user()->id;
         $post->subbreddit_id = $request->subbreddit_id;
-        // ?? SHOULD THE URL COME FROM $request OR SHOULD IT BE A FORMATTED VERSION OF THE TITLE ??
         $post->url = $request->url;
 
         $post->save();
@@ -65,10 +64,13 @@ class PostsController extends Controller
         $post = App\Post::find($id);
 
         $post->title = $request->title;
-        $post->content = $request->content;
-        $post->user_id = Auth::user()->id;
-        $post->subbreddit_id = $request->subbreddit_id;
-        $post->url = $request->url;
+        $post->content = $request->post_content;
+        //$post->subbreddit_id = $request->subbreddit_id;
+        //$post->url = $request->url;
+
+        $post->save();
+
+        return $post;
     }
 
     /**
