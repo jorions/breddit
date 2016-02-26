@@ -64,13 +64,18 @@ class PostsController extends Controller
     {
         $post = App\Post::find($id);
 
-        $post->title = $request->title;
-        $post->content = $request->post_content;
-        $post->url = $request->url;
+        if($post->user_id == \Auth::user()->id) {
 
-        $post->save();
+            $post->title = $request->title;
+            $post->content = $request->post_content;
+            $post->url = $request->url;
 
-        return $post;
+            $post->save();
+
+            return $post;
+        }
+
+        return response("Unauthorized", 403);
     }
 
     /**
@@ -82,8 +87,14 @@ class PostsController extends Controller
     public function destroy($id)
     {
         $post = App\Post::find($id);
-        $post->delete();
 
-        return $post;
+        if($post->user_id == \Auth::user()->id) {
+
+            $post->delete();
+
+            return $post;
+        }
+
+        return response("Unauthorized", 403);
     }
 }

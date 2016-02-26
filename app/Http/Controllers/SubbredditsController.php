@@ -35,8 +35,6 @@ class SubbredditsController extends Controller
         // Create a new subbreddit
         $subbreddit = new App\Subbreddit;
 
-        // ?? SHOULD THIS USER_ID BE AUTHENTICATED LIKE OUR EXAMPLE BELOW? IF NOT HOW DOES THE $request KNOW WHAT THE
-        // USER_ID SHOULD BE?
         $subbreddit->user_id =  \Auth::user()->id;
         $subbreddit->name = $request->name;
         $subbreddit->description = $request->description;
@@ -75,12 +73,18 @@ class SubbredditsController extends Controller
     {
         // Get a current subbreddit based on its ID
         $subbreddit = App\Subbreddit::find($id);
-        $subbreddit->name = $request->name;
-        $subbreddit->description = $request->description;
 
-        $subbreddit->save();
+        if($subbreddit->user_id == \Auth::user()->id) {
 
-        return $subbreddit;
+            $subbreddit->name = $request->name;
+            $subbreddit->description = $request->description;
+
+            $subbreddit->save();
+
+            return $subbreddit;
+        }
+
+        return response("Unauthorized", 403);
     }
 
 
@@ -97,9 +101,15 @@ class SubbredditsController extends Controller
         // database then return TRUE or FALSE, which would be assigned to $subbreddit. So instead we used delete() to
         // keep the entry available in memory in case we want to undo the delete
         $subbreddit = App\Subbreddit::find($id);
-        $subbreddit->delete();
 
-        // Return the now-deleted subbreddit in case the delete needs to be undone
-        return $subbreddit;
+        if($subbreddit->user_id == \Auth::user()->id) {
+
+            $subbreddit->delete();
+
+            // Return the now-deleted subbreddit in case the delete needs to be undone
+            return $subbreddit;
+        }
+
+        return response("Unauthorized", 403);
     }
 }

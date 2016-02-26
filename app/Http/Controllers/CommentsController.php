@@ -62,11 +62,15 @@ class CommentsController extends Controller
     {
         $comment = App\Comment::find($id);
 
-        $comment->content = $request->comment_content;
+        if ($comment->user_id == \Auth::user()->id) {
 
-        $comment->save();
+            $comment->content = $request->comment_content;
+            $comment->save();
 
-        return $comment;
+            return $comment;
+        }
+
+        return response("Unauthorized", 403);
     }
 
     /**
@@ -79,8 +83,13 @@ class CommentsController extends Controller
     {
         $comment = App\Comment::find($id);
 
-        $comment->delete();
+        if ($comment->user_id == \Auth::user()->id) {
 
-        return $comment;
+            $comment->delete();
+
+            return $comment;
+        }
+
+        return response ("Unauthorized", 403);
     }
 }

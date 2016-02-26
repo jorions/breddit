@@ -66,15 +66,19 @@ class UsersController extends Controller
     {
         $user = App\User::find($id);
 
-        $user->name = $request->name;
-        $user->email = $request->email;
+        if ($user->id == \Auth::user()->id) {
+            $user->name = $request->name;
+            $user->email = $request->email;
 
-        // ?? IS THERE A DIFFERENT WAY TO STORE THIS GIVEN THAT WE SHOULD HASH THE DATA??
-        $user->password = $request->password;
+            // ?? IS THERE A DIFFERENT WAY TO STORE THIS GIVEN THAT WE SHOULD HASH THE DATA??
+            $user->password = $request->password;
 
-        $user->save();
+            $user->save();
 
-        return $user;
+            return $user;
+        }
+
+        return response("Unauthorized", 403);
 
     }
 
@@ -87,8 +91,14 @@ class UsersController extends Controller
     public function destroy($id)
     {
         $user = App\User::find($id);
-        $user->delete();
 
-        return $user;
+        if ($user->id == \Auth::user()->id) {
+
+            $user->delete();
+
+            return $user;
+        }
+
+        return response("Unauthorized", 403);
     }
 }
