@@ -38,38 +38,38 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/home', 'HomeController@index');
 
     // index() and show() can be seen without being logged in
-    Route::resource('subbreddit', 'SubbredditsController', [
+    Route::resource('subbreddits', 'SubbredditsController', [
         'only' => ['index', 'show']
     ]);
 
-    Route::resource('user', 'UsersController', [
+    Route::resource('users', 'UsersController', [
         'only' => ['index', 'show']
     ]);
 
-    Route::resource('post', 'PostsController', [
+    Route::resource('posts', 'PostsController', [
         'only' => ['index', 'show']
     ]);
 
-    Route::resource('comment', 'CommentsController', [
+    Route::resource('comments', 'CommentsController', [
         'only' => ['index', 'show']
     ]);
 
     // These are the routes that can only be accessed once you are logged in
     Route::group(['middleware' => 'auth'], function () {
 
-        Route::resource('subbreddit', 'SubbredditsController', [
+        Route::resource('subbreddits', 'SubbredditsController', [
             'only' => ['store', 'update', 'destroy']
         ]);
 
-        Route::resource('user', 'UsersController', [
+        Route::resource('users', 'UsersController', [
             'only' => ['store', 'update', 'destroy']
         ]);
 
-        Route::resource('post', 'PostsController', [
+        Route::resource('posts', 'PostsController', [
             'only' => ['store', 'update', 'destroy']
         ]);
 
-        Route::resource('comment', 'CommentsController', [
+        Route::resource('comments', 'CommentsController', [
             'only' => ['store', 'update', 'destroy']
         ]);
 
