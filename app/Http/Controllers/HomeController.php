@@ -14,6 +14,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+        // This means that even though in our routes we don't have the home route in the 'auth' middleware, the home
+        // page will automatically have the 'auth' middleware added to it
         $this->middleware('auth');
     }
 

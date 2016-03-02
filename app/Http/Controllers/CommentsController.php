@@ -33,7 +33,7 @@ class CommentsController extends Controller
         $comment->user_id = \Auth::user()->id;
         $comment->comment_id = $request->comment_id;
         $comment->post_id = $request->post_id;
-        $comment->content = $request->comment_content;
+        $comment->comment_content = $request->comment_content;
 
         $comment->save();
 
@@ -64,7 +64,7 @@ class CommentsController extends Controller
 
         if ($comment->user_id == \Auth::user()->id) {
 
-            $comment->content = $request->comment_content;
+            $comment->comment_content = $request->comment_content;
             $comment->save();
 
             return $comment;

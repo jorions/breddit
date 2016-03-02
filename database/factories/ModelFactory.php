@@ -41,14 +41,14 @@ $factory->define(App\Subbreddit::class, function(Faker\Generator $faker) {
 
 $factory->define(App\Comment::class, function(Faker\Generator $faker) {
 	return [
-		'content' => $faker->text,
+		'comment_content' => $faker->text,
 	];
 });
 
 $factory->define(App\Post::class, function(Faker\Generator $faker) {
 	return [
 		'title' => $faker->sentence,
-		'content' => $faker->text,
+		'post_content' => $faker->text,
 		'url' => $faker->unique()->url,
 	];
 });
