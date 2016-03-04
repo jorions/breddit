@@ -24,6 +24,12 @@
 |
 */
 
+// Route to view logs - ONLY FOR USE IN DEVELOPMENT. This if statement makes it so that when we deploy our app, and in the
+// .env we set APP_DEBUG to false (which you would always do for deployment), this route will not be available
+if(env('APP_DEBUG')) {
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+}
+
 
 Route::group(['middleware' => 'web'], function () {
 
