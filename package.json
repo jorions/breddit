@@ -2,7 +2,9 @@
   "private": true,
   "devDependencies": {
     "browserify": "^13.0.0",
-    "gulp": "^3.8.8"
+    "gulp": "^3.8.8",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {}
 }
