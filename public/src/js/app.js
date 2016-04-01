@@ -5,7 +5,7 @@
 // for backbone and underscore, but you run the risk of interfering with other code in certain use cases.
 var $ = window.$ = window.jQuery = require('jquery');
 
-var HomeView = require('../src/js/views/HomeView.js');
+var HomeView = require('./views/HomeView.js');
 
 // Same as $(document).ready(function() {
 $(function() {
