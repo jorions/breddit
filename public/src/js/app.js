@@ -1,6 +1,11 @@
 'use strict';
 
-var HomeView = require('./views/HomeView.js');
+// jQuery has very special needs. It attaches itself to the DOM. So while our other libraries are being linked to in each
+// file using require(), we can just use this line in this file to make it globally available. You could use this approach
+// for backbone and underscore, but you run the risk of interfering with other code in certain use cases.
+var $ = window.$ = window.jQuery = require('jquery');
+
+var HomeView = require('../src/js/views/HomeView.js');
 
 // Same as $(document).ready(function() {
 $(function() {

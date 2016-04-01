@@ -1,3 +1,6 @@
+var Backbone = require('backbone');
+var _ = require('underscore');
+
 var SubbredditsListView = Backbone.View.extend({
     // If anything about a view is dynamic it may be easiest to put the parent element as the el, and then put all other
     // information into the template

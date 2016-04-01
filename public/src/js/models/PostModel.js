@@ -1,3 +1,5 @@
+var Backbone = require('backbone');
+
 // This is an individual model that is based on the urlRoot you provide
 // So when you instantiate a PostModel, the different methods you can use in the console such as fetch etc are tied to
 // particular types of request (ex: fetch() = GET). Backbone is made to integrate well with RESTful APIs
