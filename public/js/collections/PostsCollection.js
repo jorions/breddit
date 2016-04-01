@@ -1,3 +1,5 @@
+var PostModel = require('../models/PostModel.js');
+
 // This represents a group of models
 // Collections are better for listing things (you would never use collect.save()). It is more just for fetching. In other
 // words, this is good for your index (GET) controller method

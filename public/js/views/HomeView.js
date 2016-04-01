@@ -18,8 +18,10 @@ var HomeView = Backbone.View.extend({
 
     // This is a helper function to stop the render() from getting too big
     insertSubbreddits: function() {
+        var SubbredditsCollection = require('../collections/SubbredditsCollection.js');
         var subbreddits = new SubbredditsCollection();
         subbreddits.fetch();
+        var SubbredditsListView = require('./SubbredditsListView.js');
         var subbredditsListView = new SubbredditsListView({ collection: subbreddits });
         // Because the subbredditsListView's render function has 'return this' it returns the context of the render, which
         // is the view, which is why we can say 'subbredditsListView.render().el' instead of what we have below. We can
@@ -33,8 +35,10 @@ var HomeView = Backbone.View.extend({
 
     // This is a helper function to stop the render() from getting too big
     insertPosts: function() {
+        var PostsCollection = require('../collections/PostsCollection.js');
         var posts = new PostsCollection();
         posts.fetch();
+        var PostsListView = require('./PostsListView.js');
         var postsListView = new PostsListView({
             collection: posts
         });

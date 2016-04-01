@@ -40,7 +40,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.3/backbone.js"></script>
     <!-- asset maps to "public" folder -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/bundle.js') }}"></script>
 
 </body>
 </html>
