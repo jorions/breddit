@@ -1,6 +1,6 @@
 'use strict';
 
-var HomeView = require('/views/HomeView.js');
+var HomeView = require('./views/HomeView.js');
 
 // Same as $(document).ready(function() {
 $(function() {
