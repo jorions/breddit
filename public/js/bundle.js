@@ -1,3 +1,4 @@
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
 // Same as $(document).ready(function() {
@@ -17,23 +18,23 @@ $.ajaxSetup({
 // particular types of request (ex: fetch() = GET). Backbone is made to integrate well with RESTful APIs
 // This model does not contain any of the properties of a post right now, it is just a shell. It gets the properties once we
 // fetch data
-//var PostModel = Backbone.Model.extend({
-//    urlRoot: '/api/posts/',
-//    // Is almost always just 'id'
-//    idAttribute: 'id',
-//
-//    // /api/posts/ returns both a post, and the posts's subbreddit as an attribute of the post. So this method is going
-//    // to assign this subbreddit attribute to a new SubbredditModel so that we can then call on and use it as desired
-//    parse: function(response) {
-//
-//        // If there is a subbreddit attribute in the response, make it a new SubbredditModel
-//        if(response.subbreddit) {
-//            response.subbreddit = new SubbredditModel(response.subbreddit);
-//        }
-//        return response;
-//    }
-//});
-var PostModel = require('./models/PostModel.js');
+var PostModel = Backbone.Model.extend({
+    urlRoot: '/api/posts/',
+    // Is almost always just 'id'
+    idAttribute: 'id',
+
+    // /api/posts/ returns both a post, and the posts's subbreddit as an attribute of the post. So this method is going
+    // to assign this subbreddit attribute to a new SubbredditModel so that we can then call on and use it as desired
+    parse: function(response) {
+
+        // If there is a subbreddit attribute in the response, make it a new SubbredditModel
+        if(response.subbreddit) {
+            response.subbreddit = new SubbredditModel(response.subbreddit);
+        }
+        return response;
+    }
+});
+//var PostModel = require('./models/PostModel.js');
 
 
 var SubbredditModel = Backbone.Model.extend({
@@ -364,3 +365,4 @@ $('#content').html(homeView.render().el);
 //    }
 //});
 //});
+},{}]},{},[1]);
