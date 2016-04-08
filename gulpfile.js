@@ -28,6 +28,9 @@ var source = require('vinyl-source-stream');
 // "npm install vinyl-buffer --save-dev"
 var buffer = require('vinyl-buffer');
 
+var sass = require('gulp-sass');
+
+var sourcemaps = require('gulp-sourcemaps');
 
 // Creates a task called 'bundle'. Now, in the terminal when we are inside the home directory, we could type 'gulp bundle'
 // which will run the anonymous function specified.
@@ -69,6 +72,16 @@ gulp.task('bundle', function() {
 // Watch for a change in public/src/js/..., and when a change is detected, run 'bundle'
 gulp.task('watch', function() {
     gulp.watch('public/src/js/**/*.js', ['bundle']);
+    gulp.watch('public/src/js/**/*.scss', ['bundle']);
+});
+
+// Created to add foundation functionality
+gulp.task('sass', function() {
+   return gulp.src('./public/src/scss/app.scss')
+       .pipe.sourcemaps.init()
+       .pipe(sass().on('error', sass.logError))
+       .pipe(gulp.dest('./public/css'))
+       .pipe(sourcemaps.write('.');
 });
 
 // If we name the task 'default' we could just type "gulp" in the terminal, to run the task. 'default' runs automatically.
