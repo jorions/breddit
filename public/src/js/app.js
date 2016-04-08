@@ -4,6 +4,8 @@
 // file using require(), we can just use this line in this file to make it globally available. You could use this approach
 // for backbone and underscore, but you run the risk of interfering with other code in certain use cases.
 var $ = window.$ = window.jQuery = require('jquery');
+require('foundation-sites');
+
 
 var HomeView = require('./views/HomeView.js');
 
