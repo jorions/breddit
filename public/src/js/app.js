@@ -12,6 +12,8 @@ var HomeView = require('./views/HomeView.js');
 // Same as $(document).ready(function() {
 $(function() {
 
+    $(document).foundation();
+    
     // Put CSRF token in every page
     $.ajaxSetup({
         headers: {
