@@ -1,0 +1,8 @@
+/*
+There is no () in scss
+.scss is assumed for the import path
+Do not include the "_" in the 2nd file path */
+
+@import
+  '../../../node_modules/foundation-sites/scss/foundation',
+  'settings';
