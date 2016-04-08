@@ -81,7 +81,7 @@ gulp.task('sass', function() {
        .pipe.sourcemaps.init()
        .pipe(sass().on('error', sass.logError))
        .pipe(gulp.dest('./public/css'))
-       .pipe(sourcemaps.write('.');
+       .pipe(sourcemaps.write('.'));
 });
 
 // If we name the task 'default' we could just type "gulp" in the terminal, to run the task. 'default' runs automatically.
