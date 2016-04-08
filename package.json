@@ -1,14 +1,13 @@
 {
   "private": true,
-  "devDependencies": {
+  "dependencies": {
+    "backbone": "^1.3.2",
+    "foundation-sites": "^6.2.0",
+    "jquery": "^2.2.2",
+    "underscore": "^1.8.3",
     "browserify": "^13.0.0",
     "gulp": "^3.8.8",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
-  },
-  "dependencies": {
-    "backbone": "^1.3.2",
-    "jquery": "^2.2.2",
-    "underscore": "^1.8.3"
   }
 }
