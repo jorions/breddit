@@ -33,6 +33,7 @@
     <div id="nav"></div>
     <div id="content"></div>
     <div data-user-id="{{ $userId }}"></div>
+    <div id="modal" class="reveal-modal"></div>
 
     <!-- JavaScripts -->
 

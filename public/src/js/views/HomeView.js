@@ -56,8 +56,11 @@ var HomeView = Backbone.View.extend({
         // an element that contains a given attribute) then parse the value of the attribute that starts with "data-" followed
         // by "user-id" (this is what ".data('user-id')" does). This will give us our userId because we passed it in from
         // our HomeController to our home.blade, which makes it viewable and manipulateable in the DOM (aka in this HomeView)
-        var currentUser = new UserModel({ id: $('[data-user-id]').data('user-id')});
+        var currentUser = new UserModel({ id: $('[data-user-id]').data('user-id') });
 
+        // fetch() the currentUser's data, and upon success, create a new subbredditsListView that is populated with the
+        // currentUser's subscribed-subbreddits (Laravel automatically turns the "subscribedSubbreddits" method for the
+        // backend User model into "subscribed_subbreddits"
         currentUser.fetch({
             success: function() {
                 var subbredditsListView = new SubbredditsListView({

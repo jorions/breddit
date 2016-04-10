@@ -1,5 +1,8 @@
 var Backbone = require('backbone');
 var _ = require('underscore');
+var SubbredditModel = require('../models/SubbredditModel.js');
+var PostsListView = require('./PostsListView.js');
+var SubbredditModalView = require('./SubbredditModalView.js')
 
 var SubbredditsListView = Backbone.View.extend({
     // If anything about a view is dynamic it may be easiest to put the parent element as the el, and then put all other
@@ -14,13 +17,14 @@ var SubbredditsListView = Backbone.View.extend({
     // subbreddit's name instead
     template: _.template('\
         <% subbreddits.each(function(subbreddit) {%>\
-            <li><a data-id="<%= subbreddit.id %>" href="#"><%= subbreddit.get("name") %></a></li>\
+            <li><a id="subbreddit" data-id="<%= subbreddit.id %>" href="#"><%= subbreddit.get("name") %></a></li>\
         <% }) %>\
+        <li><a href="#" id="add-subbreddit" data-reveal-id="modal">Add Subbreddit</a>\
     '),
 
     events: {
         // The 'e' in this "anonamyous function" is the event object being passed from the click
-        'click a': function(e) {
+        'click #subbreddit': function(e) {
 
             // This makes sure that if the clicked link is invalid nothing happens
             e.preventDefault();
@@ -30,19 +34,27 @@ var SubbredditsListView = Backbone.View.extend({
             // given as a parameter. Ex: data('fun') would look for the attribute with the name 'data-fun' and return its
             // value
             var subbredditId = $(e.target).data('id');
-            var SubbredditModel = require('../models/SubbredditModel.js');
             var subbreddit = new SubbredditModel({ id: subbredditId });
             subbreddit.fetch({
                 success: function() {
-                    var PostsListView = require('./PostsListView.js');
                     var postsListView = new PostsListView({
                         collection: subbreddit.get('posts')
                     });
                     $('#posts').html(postsListView.render().el);
                 }
             });
+        },
+        
+        // This will make the subbreddit modal view (which is a form to add a new subbreddit) pop up upon clicking the
+        // "Add Subbreddit" link in this template
+        'click #add-subbreddit': function(event) {
+            var subbredditModalView = new SubbredditModalView();
+            $('#modal').html(subbredditModalView.el);
+            subbredditModalView.render();
+            
         }
     },
+
 
     // initialize is a special function that runs automatically
     // Listen for 'update' on this.collection, and then when that happens, run this.render
