@@ -88,4 +88,7 @@ gulp.task('sass', function() {
 // No other task name does this - 'default' is a special name
 // Now in the terminal when we type 'gulp', it bundles the code and then turns on the 'watch' task to listen for further
 // changes, which when detected re-run bundle as described above
-gulp.task('default', ['bundle', 'sass', 'watch']);
+gulp.task('default', ['build', 'watch']);
+
+// This is used on 
+gulp.task('build', ['bundle', 'sass']);
