@@ -19,7 +19,7 @@ var SubbredditsListView = Backbone.View.extend({
         <% subbreddits.each(function(subbreddit) {%>\
             <li><a id="subbreddit" data-id="<%= subbreddit.id %>" href="#"><%= subbreddit.get("name") %></a></li>\
         <% }) %>\
-        <li><a href="#" id="add-subbreddit" data-reveal-id="modal">Add Subbreddit</a>\
+        <a href="#" id="add-subbreddit" data-reveal-id="modal">Add Subbreddit</a>\
     '),
 
     events: {
@@ -48,7 +48,7 @@ var SubbredditsListView = Backbone.View.extend({
         // This will make the subbreddit modal view (which is a form to add a new subbreddit) pop up upon clicking the
         // "Add Subbreddit" link in this template
         'click #add-subbreddit': function(event) {
-            var subbredditModalView = new SubbredditModalView();
+            var subbredditModalView = new SubbredditModalView({ collection: this.collection });
             $('#modal').html(subbredditModalView.el);
             subbredditModalView.render();
             

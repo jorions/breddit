@@ -21,7 +21,7 @@
             overflow: scroll;
         }
         #posts {
-            height: 300px;
+            height: 600px;
             overflow: scroll;
             font-size: 12px;
         }
@@ -33,7 +33,10 @@
     <div id="nav"></div>
     <div id="content"></div>
     <div data-user-id="{{ $userId }}"></div>
-    <div id="modal" class="reveal-modal"></div>
+    <div id="modal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+
+    </div>
+
 
     <!-- JavaScripts -->
 

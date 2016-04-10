@@ -6,6 +6,7 @@ var SubbredditModalView = Backbone.View.extend({
     el: '<div></div>',
     
     template: _.template('\
+        <h3>Add a Subbreddit</h3>\
         <form>\
             <input type="text" name="name">\
             <textarea name="description"></textarea>\
@@ -27,10 +28,18 @@ var SubbredditModalView = Backbone.View.extend({
 
             // Saves the new model to the backend. Because we aren't using a model with an id, then the save() is a POST
             // request to the backend, instead of a PUT (which would make it an update to a current subbreddit)
-            subbreddit.save();
+            // The first argument for save() is the attributes you want to pass in. We already defined above in
+            // "var subbreddit = ", however, which is why we are just passing null to save() below
+            // The second argument for save() is for the options to pass in (such as "success")
+            subbreddit.save(null, {
+                success: function() {
+                    // Updates the collection to contain the new subbreddit so that we can see the newly added subbreddit immediately
+                    this.collection.add(subbreddit);
 
-            // Updates the collection to contain the new subbreddit so that we can see the newly added subbreddit immediately
-            this.collection.add(subbreddit);
+                    // Close the modal once the save is successful and the new subbreddit is added to the file
+                    $('#modal').foundation('reveal', 'close');
+                }
+            });
         }
 
     },
