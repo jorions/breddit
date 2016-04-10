@@ -1,30 +1,42 @@
 var Backbone = require('backbone');
 var _ = require('underscore');
 
+var SubbredditsListView = require('./SubbredditsListView.js');
+var SubbredditsCollection = require('../collections/SubbredditsCollection.js');
+var PostsListView = require('./PostsListView.js');
+var PostsCollection = require('../collections/PostsCollection.js');
+var UserModel = require('../models/UserModel.js');
+
 var HomeView = Backbone.View.extend({
     el: '\
         <div class="container">\
             <div class="row">\
-                <div class="three columns"></div>\
-                <div class="six columns">\
+                <div class="small-7 columns">\
                     <div class="row">\
-                        <div class="twelve columns" id="posts"></div>\
+                        <div class="small-12 columns" id="posts"></div>\
                     </div>\
                     <div class="row">\
-                        <div class="twelve columns"></div>\
+                        <div class="small-12 columns"></div>\
                     </div>\
                 </div>\
-                <div class="three columns" id="all-subbreddits"></div>\
+                <div class="small-5 columns">\
+                    <ul class="tabs" data-tab>\
+                        <li class="tab-title active"><a href="#all-subbreddits">All</a></li>\
+                        <li class="tab-title"><a href="#subscribed-subbreddits">Subscribed</a></li>\
+                    </ul>\
+                    <div class="tabs-content">\
+                        <div class="content active" id="all-subbreddits"></div>\
+                        <div class="content" id="subscribed-subbreddits"></div>\
+                    </div>\
+                </div>\
             </div>\
         </div>\
     ',
 
     // This is a helper function to stop the render() from getting too big
-    insertSubbreddits: function() {
-        var SubbredditsCollection = require('../collections/SubbredditsCollection.js');
+    insertAllSubbreddits: function() {
         var subbreddits = new SubbredditsCollection();
         subbreddits.fetch();
-        var SubbredditsListView = require('./SubbredditsListView.js');
         var subbredditsListView = new SubbredditsListView({ collection: subbreddits });
         // Because the subbredditsListView's render function has 'return this' it returns the context of the render, which
         // is the view, which is why we can say 'subbredditsListView.render().el' instead of what we have below. We can
@@ -36,12 +48,27 @@ var HomeView = Backbone.View.extend({
         this.$el.find('#all-subbreddits').html(subbredditsListView.el);
     },
 
+    insertSubscribedSubbreddits: function() {
+
+        var that = this;
+
+        var currentUser = new UserModel({ id:1 });
+
+        currentUser.fetch({
+            success: function() {
+                var subbredditsListView = new SubbredditsListView({
+                    collection: currentUser.get('subscribed_subbreddits')
+                });
+                that.$el.find('#subscribed-subbreddits').html(subbredditsListView.render().el);
+            }
+        });
+
+    },
+
     // This is a helper function to stop the render() from getting too big
     insertPosts: function() {
-        var PostsCollection = require('../collections/PostsCollection.js');
         var posts = new PostsCollection();
         posts.fetch();
-        var PostsListView = require('./PostsListView.js');
         var postsListView = new PostsListView({
             collection: posts
         });
@@ -50,8 +77,10 @@ var HomeView = Backbone.View.extend({
     },
 
     render: function() {
-        this.insertSubbreddits();
+        this.insertAllSubbreddits()
+        this.insertSubscribedSubbreddits();
         this.insertPosts();
+        $(document).foundation('reflow', 'tabs');
         return this;
     }
 });

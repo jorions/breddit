@@ -72,13 +72,13 @@ gulp.task('bundle', function() {
 // Watch for a change in public/src/js/..., and when a change is detected, run 'bundle'
 gulp.task('watch', function() {
     gulp.watch('public/src/js/**/*.js', ['bundle']);
-    gulp.watch('public/src/js/**/*.scss', ['bundle']);
+    gulp.watch('public/src/scss/**/*.scss', ['sass']);
 });
 
 // Created to add foundation functionality
 gulp.task('sass', function() {
    return gulp.src('./public/src/scss/app.scss')
-       .pipe.sourcemaps.init()
+       .pipe(sourcemaps.init())
        .pipe(sass().on('error', sass.logError))
        .pipe(gulp.dest('./public/css'))
        .pipe(sourcemaps.write('.'));
@@ -88,4 +88,4 @@ gulp.task('sass', function() {
 // No other task name does this - 'default' is a special name
 // Now in the terminal when we type 'gulp', it bundles the code and then turns on the 'watch' task to listen for further
 // changes, which when detected re-run bundle as described above
-gulp.task('default', ['bundle', 'watch']);
+gulp.task('default', ['bundle', 'sass', 'watch']);

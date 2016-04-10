@@ -52,7 +52,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        return App\Subbreddit::with('posts')->find($id);
+        return App\User::with('subscribedSubbreddits')->find($id);
     }
 
     /**

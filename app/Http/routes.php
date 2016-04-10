@@ -73,7 +73,7 @@ Route::group(['middleware' => 'web'], function () {
             ]);
 
             Route::resource('users', 'UsersController', [
-                'only' => ['store', 'update', 'destroy']
+                'only' => ['show', 'update', 'destroy']
             ]);
 
             Route::resource('posts', 'PostsController', [
