@@ -52,7 +52,11 @@ var HomeView = Backbone.View.extend({
 
         var that = this;
 
-        var currentUser = new UserModel({ id:1 });
+        // Look for div with the attribute 'data-user-id' (wrapping something in brackets is the CSS selector for selecting
+        // an element that contains a given attribute) then parse the value of the attribute that starts with "data-" followed
+        // by "user-id" (this is what ".data('user-id')" does). This will give us our userId because we passed it in from
+        // our HomeController to our home.blade, which makes it viewable and manipulateable in the DOM (aka in this HomeView)
+        var currentUser = new UserModel({ id: $('[data-user-id]').data('user-id')});
 
         currentUser.fetch({
             success: function() {

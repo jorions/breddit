@@ -30,10 +30,9 @@
 </head>
 <body>
 
-    <div id="content">
-
-    </div>
-
+    <div id="nav"></div>
+    <div id="content"></div>
+    <div data-user-id="{{ $userId }}"></div>
 
     <!-- JavaScripts -->
 

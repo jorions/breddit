@@ -26,6 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        
+        // Will insert into the home.blade the user's id with the name userId (can be referenced in the blade with {{ $userId }})
+        return view('home', ['userId' => \Auth::user()->id]);
     }
 }
