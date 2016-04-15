@@ -6,7 +6,7 @@ var Backbone = require('backbone');
 // This model does not contain any of the properties of a post right now, it is just a shell. It gets the properties once we
 // fetch data
 var PostModel = Backbone.Model.extend({
-    urlRoot: '/api/posts/',
+    urlRoot: '/api/posts',
     // Is almost always just 'id'
     idAttribute: 'id',
 

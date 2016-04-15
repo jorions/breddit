@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="754599e8-2269-4d29-9062-be04536aedba" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/SubbredditUserController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/SubbredditUserController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/js/views/HomeView.js" afterPath="$PROJECT_DIR$/public/src/js/views/HomeView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/js/views/PostsListView.js" afterPath="$PROJECT_DIR$/public/src/js/views/PostsListView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/js/views/SubbredditsListView.js" afterPath="$PROJECT_DIR$/public/src/js/views/SubbredditsListView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/js/models/CommentModel.js" afterPath="$PROJECT_DIR$/public/src/js/models/CommentModel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/js/models/PostModel.js" afterPath="$PROJECT_DIR$/public/src/js/models/PostModel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/js/models/SubbredditModel.js" afterPath="$PROJECT_DIR$/public/src/js/models/SubbredditModel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/js/models/UserModel.js" afterPath="$PROJECT_DIR$/public/src/js/models/UserModel.js" />
     </list>
     <ignored path="breddit.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,6 +27,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="PostModel.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/src/js/models/PostModel.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SubbredditModel.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/src/js/models/SubbredditModel.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserModel.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/src/js/models/UserModel.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="PostsListView.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/src/js/views/PostsListView.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -52,7 +81,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PostsListTemplate.ejs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PostsListTemplate.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/src/js/templates/PostsListTemplate.ejs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -72,16 +101,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="78" column="57" selection-start-line="77" selection-start-column="0" selection-end-line="78" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SubbredditsListView.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/src/js/views/SubbredditsListView.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -90,6 +109,16 @@
               <folding>
                 <marker date="1460683057000" expanded="true" signature="1063:1377" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommentModel.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/src/js/models/CommentModel.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -141,15 +170,11 @@
         <option value="$PROJECT_DIR$/public/src/js/collections/CommentsCollection.js" />
         <option value="$PROJECT_DIR$/public/src/js/collections/PostsCollection.js" />
         <option value="$PROJECT_DIR$/public/src/js/collections/SubbredditsCollection.js" />
-        <option value="$PROJECT_DIR$/public/src/js/models/CommentModel.js" />
-        <option value="$PROJECT_DIR$/public/src/js/models/PostModel.js" />
-        <option value="$PROJECT_DIR$/public/src/js/models/SubbredditModel.js" />
         <option value="$PROJECT_DIR$/public/js/app.js" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php" />
         <option value="$PROJECT_DIR$/public/src/scss/_settings.scss" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/public/src/scss/app.scss" />
-        <option value="$PROJECT_DIR$/public/src/js/models/UserModel.js" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/public/src/js/views/SubbredditsModalView.js" />
@@ -170,6 +195,10 @@
         <option value="$PROJECT_DIR$/public/src/js/views/HomeView.js" />
         <option value="$PROJECT_DIR$/public/src/js/views/PostsListView.js" />
         <option value="$PROJECT_DIR$/public/src/js/templates/PostsListTemplate.ejs" />
+        <option value="$PROJECT_DIR$/public/src/js/models/PostModel.js" />
+        <option value="$PROJECT_DIR$/public/src/js/models/CommentModel.js" />
+        <option value="$PROJECT_DIR$/public/src/js/models/SubbredditModel.js" />
+        <option value="$PROJECT_DIR$/public/src/js/models/UserModel.js" />
       </list>
     </option>
   </component>
@@ -619,12 +648,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1455240297723</updated>
-      <workItem from="1459899749007" duration="34359000" />
+      <workItem from="1459899749007" duration="34544000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34359000" />
+    <option name="totallyTimeSpent" value="34544000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -741,26 +770,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/js/models/CommentModel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="35" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CommentsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/js/models/PostModel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="35" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
           <folding />
         </state>
       </provider>
@@ -829,14 +842,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/js/models/UserModel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -891,14 +896,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
           <caret line="110" column="9" selection-start-line="110" selection-start-column="9" selection-end-line="110" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/js/models/SubbredditModel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
           <folding />
         </state>
       </provider>
@@ -1092,6 +1089,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/js/models/PostModel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/js/models/CommentModel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/js/models/SubbredditModel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/js/models/UserModel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
           <folding />
         </state>
       </provider>
