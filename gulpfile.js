@@ -32,6 +32,8 @@ var sass = require('gulp-sass');
 
 var sourcemaps = require('gulp-sourcemaps');
 
+var ejsify = require('ejsify');
+
 // Creates a task called 'bundle'. Now, in the terminal when we are inside the home directory, we could type 'gulp bundle'
 // which will run the anonymous function specified.
 // ###################################################################################################################
@@ -57,7 +59,8 @@ var sourcemaps = require('gulp-sourcemaps');
 gulp.task('bundle', function() {
     return browserify({
         entries: ['public/src/js/app.js'],
-        debug: true
+        debug: true,
+        transform: [ejsify]
     }).bundle()
         .on('error', function(error) {
             console.log(error.toString());
@@ -72,6 +75,7 @@ gulp.task('bundle', function() {
 // Watch for a change in public/src/js/..., and when a change is detected, run 'bundle'
 gulp.task('watch', function() {
     gulp.watch('public/src/js/**/*.js', ['bundle']);
+    gulp.watch('public/src/js/**/*.ejs', ['bundle']);
     gulp.watch('public/src/scss/**/*.scss', ['sass']);
 });
 
