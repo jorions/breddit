@@ -23,7 +23,7 @@ var SubbredditsListView = Backbone.View.extend({
     '),
 
     events: {
-        // The 'e' in this "anonamyous function" is the event object being passed from the click
+        // The 'e' in this "anonymous function" is the event object being passed from the click
         'click #subbreddit': function(e) {
 
             // This makes sure that if the clicked link is invalid nothing happens

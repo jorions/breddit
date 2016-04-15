@@ -5,9 +5,10 @@
 // for backbone and underscore, but you run the risk of interfering with other code in certain use cases.
 var $ = window.$ = window.jQuery = require('jquery');
 require('foundation');
-
-
+var Backbone = require('backbone');
 var HomeView = require('./views/HomeView.js');
+var PostModel = require('./models/PostModel.js');
+var PostView = require('./views/PostView.js');
 
 // Same as $(document).ready(function() {
 $(function() {
@@ -22,10 +23,37 @@ $(function() {
     });
 
     // ADD TOP NAV HERE
-    
-    var homeView = new HomeView();
-    $('#content').html(homeView.el);
-    homeView.render();
+
+
+    var AppRouter = Backbone.Router.extend({
+        routes: {
+            '': 'home',
+            '/': 'home',
+            'post/:id': 'post'
+        },
+
+        home: function() {
+            var homeView = new HomeView();
+            $('#content').html(homeView.el);
+            homeView.render();
+        },
+
+        post: function(id) {
+            var post = new PostModel({
+                id: id
+            });
+            post.fetch();
+            var postView = new PostView({
+                model: post
+            });
+            $('#content').html(postView.el);
+            postView.render();
+        }
+    });
+
+    var router = new AppRouter();
+    // Enables backwards/forwards arrows to work with jquery
+    Backbone.history.start();
     
 })
 

@@ -9,7 +9,7 @@ var PostsListView = Backbone.View.extend({
     template: _.template('\
         <% posts.each(function(post) { %>\
             <li>\
-                <a href="#"><%= post.get("title") %></a>\
+                <a href="#post/<%= post.id %>"><%= post.get("title") %></a>\
                 <% if(post.get("subbreddit")) { %>\
                     <%= post.get("subbreddit").get("name") %>\
                 <% } %>\
