@@ -8,7 +8,7 @@
                 <div class="panel-heading">Welcome</div>
 
                 <div class="panel-body">
-                    Your Application's Landing Page.
+                    Welcome to B.Reddit - the basic Reddit
                 </div>
             </div>
         </div>
