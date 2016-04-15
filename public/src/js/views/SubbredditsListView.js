@@ -17,7 +17,10 @@ var SubbredditsListView = Backbone.View.extend({
     // subbreddit's name instead
     template: _.template('\
         <% subbreddits.each(function(subbreddit) {%>\
-            <li><a id="subbreddit" data-id="<%= subbreddit.id %>" href="#"><%= subbreddit.get("name") %></a></li>\
+            <li>\
+                <a id="subbreddit" data-id="<%= subbreddit.id %>" href="#"><%= subbreddit.get("name") %></a>\
+                <small><a id="subscribe" data-id="<%= subbreddit.id %>" href="#">Subscribe</a></small>\
+            </li>\
         <% }) %>\
         <a href="#" id="add-subbreddit" data-reveal-id="modal">Add Subbreddit</a>\
     '),
@@ -52,6 +55,28 @@ var SubbredditsListView = Backbone.View.extend({
             $('#modal').html(subbredditModalView.el);
             subbredditModalView.render();
             
+        },
+
+        'click #subscribe': function(e) {
+
+            var that = this;
+            event.preventDefault();
+            var subbredditId = $(e.target).data('id');
+
+            // Make an ajax call of type "post" (it defaults to GET if undefined) and pass in the subbreddit_id
+            // On success, get the currentUser (defined in initialize), EXPLAINED AT 76 MIN IN VIDEO
+            $.ajax('/api/subbreddituser', {
+                type: "post",
+                data: {
+                    "subbreddit_id": subbredditId
+                },
+                success: function() {
+                    if (that.currentUser) {
+                        var subscribedSubbreddit = that.collection.get(subbredditId);
+                        that.currentUser.get('subscribed_subbreddits').add(subscribedSubbreddit);
+                    }
+                }
+            })
         }
     },
 
@@ -59,8 +84,13 @@ var SubbredditsListView = Backbone.View.extend({
     // initialize is a special function that runs automatically
     // Listen for 'update' on this.collection, and then when that happens, run this.render
     // Don't do 'this.render()' because using () on a method calls that method instead of just referring to it
-    initialize: function() {
-        this.listenTo(this.collection, 'update', this.render)
+    initialize: function(options) {
+        this.listenTo(this.collection, 'update', this.render);
+
+        // "options" is only local to initialize, and it represents everything except "model" and "collection" that you pass
+        // into a view. So we are assigning this.currentUser to = the currentUser (which is not a model or collection),
+        // which exists in the "options"
+        this.currentUser = options.currentUser;
     },
 
     // This calls the template (which we defined as a function) which we pass the variable 'subbreddits' (which we refer

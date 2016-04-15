@@ -27,7 +27,7 @@ class SubbredditUserController extends Controller
         // So instead of the above lines you could just say...
         // \Auth::user()->subscribedSubbreddts()->attach($request->subbreddit_id);
 
-        return 'true';
+        return $request->subbreddit_id;
     }
 
     /**
