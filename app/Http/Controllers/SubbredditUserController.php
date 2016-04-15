@@ -24,8 +24,8 @@ class SubbredditUserController extends Controller
         $user->subscribedSubbreddits()->attach($subbreddit);
 
         // Because we have defined the relationship, the attach assumes that the ID we are giving it is the subbreddit's
-        // So instead of the above 2 lines you could just say...
-        // $user->subscribedSubbreddts()->attach($request->subbreddit_id);
+        // So instead of the above lines you could just say...
+        // \Auth::user()->subscribedSubbreddts()->attach($request->subbreddit_id);
 
         return 'true';
     }

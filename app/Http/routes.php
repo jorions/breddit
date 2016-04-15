@@ -73,7 +73,7 @@ Route::group(['middleware' => 'web'], function () {
             ]);
 
             Route::resource('users', 'UsersController', [
-                'only' => ['show', 'update', 'destroy']
+                'only' => ['s', 'update', 'destroy']
             ]);
 
             Route::resource('posts', 'PostsController', [
@@ -82,6 +82,10 @@ Route::group(['middleware' => 'web'], function () {
 
             Route::resource('comments', 'CommentsController', [
                 'only' => ['store', 'update', 'destroy']
+            ]);
+            
+            Route::resource('subbreddituser', 'SubbredditUserController', [
+                'only' => ['store', 'destroy']
             ]);
 
         });
